@@ -8,6 +8,10 @@ const Cart = () => {
   // حساب الإجمالي مع الخصم
   const calculateTotal = () => {
     const total = state.cart.reduce((total, product) => {
+<<<<<<< HEAD
+=======
+      // إذا كان هناك سعر مخفض، نستخدمه
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
       const price = product.discountedPrice ? parseFloat(product.discountedPrice) : parseFloat(product.price || 0);
       const quantity = product.quantity ? product.quantity : 1;
       return total + price * quantity;
@@ -40,6 +44,7 @@ const Cart = () => {
       ) : (
         <div className="space-y-6">
           {state.cart.map((product) => (
+<<<<<<< HEAD
             <div key={product.id} className="flex flex-col sm:flex-row items-center justify-between p-4 border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition">
               {/* معلومات المنتج */}
               <div className="flex items-center space-x-4 w-full sm:w-auto">
@@ -47,6 +52,15 @@ const Cart = () => {
                   src={product.image || '/default-image.png'}  
                   alt={product.title} 
                   className="w-24 h-24 rounded-md shadow-md border border-gray-200"
+=======
+            <div key={product.id} className="flex items-center justify-between p-4 border border-gray-300 rounded-lg shadow-md hover:shadow-xl transition">
+              {/* معلومات المنتج */}
+              <div className="flex items-center space-x-4">
+                <img 
+                  src={product.image || '/default-image.png'}  
+                  alt={product.title} 
+                  className="w-24 h-24  rounded-md shadow-md border border-gray-200"
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
                   style={{ objectFit: 'contain' }}
                 />
                 <div>
@@ -64,7 +78,11 @@ const Cart = () => {
               </div>
 
               {/* الكمية والإجراءات */}
+<<<<<<< HEAD
               <div className="flex flex-wrap items-center space-x-4 w-full sm:w-auto mt-4 sm:mt-0">
+=======
+              <div className="flex items-center space-x-4">
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
                 <button
                   className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
                   onClick={() => {
@@ -116,6 +134,7 @@ const Cart = () => {
           Checkout
         </button>
       </div>
+<<<<<<< HEAD
 
       {/* زر العودة إلى المنتجات */}
       <div className="mt-6">
@@ -126,6 +145,8 @@ const Cart = () => {
           Back to Products
         </button>
       </div>
+=======
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
     </div>
   );
 };

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+<<<<<<< HEAD
 import Image from 'next/image';
 
 const Products = () => {
@@ -10,28 +11,51 @@ const Products = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');  // Search state
   const [selectedCategory, setSelectedCategory] = useState('');  // Category filter state
+=======
+import Image from 'next/image';  // تأكد من استيراد مكون Image من Next.js
+
+const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // حالة التحميل
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
 
   useEffect(() => {
     axios.get('https://fakestoreapi.com/products')
       .then(response => {
+<<<<<<< HEAD
         const updatedProducts = response.data.map((product, index) => {
           if (index < 4) {
             const discount = 0.2;
+=======
+        // تطبيق خصم على أول 4 منتجات فقط
+        const updatedProducts = response.data.map((product, index) => {
+          if (index < 4) { // خصم فقط على أول 4 منتجات
+            const discount = 0.2; // خصم 20%
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
             const discountedPrice = (product.price * (1 - discount)).toFixed(2);
             return {
               ...product,
               discountedPrice,
+<<<<<<< HEAD
               discount: discount * 100,
+=======
+              discount: discount * 100, // خصم كنسبة مئوية
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
             };
           } else {
             return {
               ...product,
+<<<<<<< HEAD
               discountedPrice: product.price.toFixed(2),
+=======
+              discountedPrice: product.price.toFixed(2), // السعر الكامل بدون خصم
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
               discount: 0,
             };
           }
         });
         setProducts(updatedProducts);
+<<<<<<< HEAD
         setFilteredProducts(updatedProducts);  // Set filtered products initially
         setLoading(false);
       })
@@ -80,11 +104,24 @@ const Products = () => {
   // Loading state
   if (loading) {
     return <div className="text-center py-10">Loading products...</div>;
+=======
+        setLoading(false); // بعد تحميل البيانات، قم بتغيير حالة التحميل إلى false
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+        setLoading(false); // في حالة حدوث خطأ، قم بإيقاف التحميل
+      });
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-10">جاري تحميل المنتجات...</div>; // رسالة التحميل
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-green-500 to-yellow-400 p-4">
       <h1 className='text-center p-10 text-2xl'>All Products</h1>
+<<<<<<< HEAD
       
       {/* Search and filter bar */}
       <div className="flex justify-center gap-4 mb-8">
@@ -110,14 +147,25 @@ const Products = () => {
       
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map(product => (
+=======
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map(product => (
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
           <div key={product.id} className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:scale-105 hover:shadow-2xl">
             <Image 
               src={product.image} 
               alt={product.title} 
+<<<<<<< HEAD
               width={500}  
               height={500}  
               className="w-full h-48 p-4 transition-all duration-300 transform hover:scale-105"
               style={{ objectFit: 'contain' }}
+=======
+              width={500}  // تحديد عرض الصورة
+              height={500}  // تحديد ارتفاع الصورة
+              className="w-full h-48 p-4 transition-all duration-300 transform hover:scale-105"
+              style={{ objectFit: 'contain' }}  // استخدم style لتحديد objectFit بشكل صحيح
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
             />
             <div className="p-4 flex flex-col flex-grow">
               <h3 className="text-xl font-semibold text-gray-800 mb-2 truncate">{product.title}</h3>

@@ -23,7 +23,11 @@ const CarouselPage = () => {
   }
 
   return (
+<<<<<<< HEAD
     <div className="w-full h-screen-70% relative">
+=======
+    <div className="w-full h-screen relative">
+>>>>>>> 5f7c8f9fc24347519fcc1d77e32b20c9339d63ed
       <div className="w-full h-full mx-auto relative">
         <div className="carousel-container w-full h-full relative flex overflow-hidden rounded-xl shadow-xl">
           {/* Carousel Item */}
